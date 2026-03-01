@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "PageMark",
+    "version": "2.0",
+    "description": "Pin and navigate to important AI chat messages instantly",
+    "permissions": [
+        "nativeMessaging",
+        "activeTab",
+        "tabs",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "48": "icon-48.png",
+            "96": "icon-96.png",
+            "128": "icon-128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://chatgpt.com/*",
+                "*://claude.ai/*",
+                "*://gemini.google.com/*",
+                "*://grok.com/*",
+                "*://www.doubao.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "icons": {
+        "48": "icon-48.png",
+        "96": "icon-96.png",
+        "128": "icon-128.png",
+        "256": "icon-256.png",
+        "512": "icon-512.png"
+    }
+}
